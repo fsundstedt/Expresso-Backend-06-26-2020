@@ -1,6 +1,6 @@
 const db = require("./conn.js")
 
-class indexModel {
+class landingModel {
   async showAll() {
     try {
         const response = await db.any(
@@ -8,10 +8,10 @@ class indexModel {
         );
         return response;
     } catch (error) {
-        console.error("LOGIN ERROR:", error);
+        console.error('LOGIN ERROR:', error);
         return error;
     }
   }
 }
 
-module.exports = indexModel;
+module.exports = landingModel;

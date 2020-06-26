@@ -16,7 +16,7 @@ class SignUp {
       );
       return response;
     } catch (error) {
-      console.error("ERROR: ", error);
+      console.error('ERROR: ', error);
       return error;
     }
   }

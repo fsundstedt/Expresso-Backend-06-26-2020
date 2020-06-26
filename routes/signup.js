@@ -2,17 +2,13 @@ const express = require("express");
 const router = express.Router();
 const SignUp = require("../models/signup.js");
 
-//* Adds bcrypt for password encription//
 bcrypt = require("bcrypt");
 const saltRounds = 10;
 
-/* GET home page. */
-router.get("/", function (req, res) {
-  res.send("Welcome to API").status(200);
-});
-
 /* Adds new user */
-router.post("/signup", async (req, res) => {
+router.post('/', async (req, res) => {
+  console.log('backend attempt');
+
   const {
     username,
     email,

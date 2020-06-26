@@ -19,3 +19,8 @@ CREATE TABLE pulls (
     notes varchar,
     show int
 );
+
+INSERT INTO pulls (user_id, brand, roast, grind, weight_grind, weight_pull, pull_time, rating, favorite, notes, show)
+VALUES (1, 'Test Brand', 'Dark', 'Coarse', 20.1, 230, 30, 3, 1, 'Basic coffee notes.', 1);
+
+INSERT INTO users (username, email, user_password) VALUES ('Expresso', 'admin@email.com', 'password');
