@@ -7,7 +7,6 @@ const saltRounds = 10;
 
 /* Adds new user */
 router.post('/', async (req, res) => {
-  console.log('backend attempt');
 
   const {
     username,
@@ -25,10 +24,12 @@ router.post('/', async (req, res) => {
         hash
     );
 
-    if (response.command === "INSERT" && response.rowCount >= 1) {
-      res.json({ userId: response.id }).status(200);
+    if (response[0].id >= 1) {
+      console.log('Route response: ' + response[0].id);
+      res.json({ userId: response[0].id }).status(200);
     } else {
-      res.send("Could not add new user").status(409);
+      console.log('Route response failed: ' + response[0].id);
+      res.send('Could not add new user').status(409);
     }
     res.sendStatus(200);
   } catch (err) {

@@ -1,26 +1,36 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
 
-const loginUser = require("../models/login");
-bcrypt = require("bcrypt");
+const loginUser = require('../models/login');
+bcrypt = require('bcrypt');
 
-router.post("/loginuser", async (req, res) => {
+router.post('/', async (req, res) => {
   const { email, user_password } = req.body;
 
   const user = new loginUser(email, user_password);
 
   const loginResponse = await user.login(email);
 
-  if (!!loginResponse.isValid) {
-    res.json({ userId: loginResponse.user_id }).status(200);
+  console.log('router test');
+  console.log(loginResponse);
+
+  if (typeof loginResponse[0].id === 'number') {
+    console.log(loginResponse[0].user_name);
+    res.json({
+      userId: loginResponse[0].user_id,
+      userName: loginResponse[0].user_name,
+    }).status(200);
   } else {
-    res.json({ userId: null }).status(401);
+    res.json({
+      userId: null,
+      userName: null,
+    }).status(401);
   }
 });
 
-router.get("/logout", function (req, res) {
+router.get('/logout', function (req, res) {
   req.session.destroy();
-  res.redirect("/");
+  res.redirect('/');
 });
 
 module.exports = router;

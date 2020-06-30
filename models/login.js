@@ -14,16 +14,17 @@ class loginUser {
   async login(email) {
     try {
       const response = await db.any(
-        `SELECT id, username, email, user_password FROM users WHERE email = $1;`,
+        `SELECT id, username, user_password FROM users WHERE email = $1;`,
         [email]
       );
 
       const isValid = this.checkPassword(response[0].user_password);
 
       if (!!isValid) {
-        const { id, first_name, last_name } = response[0];
-        return { isValid, user_id: id, first_name, last_name };
+        console.log('works');
+        return response[0];
       } else {
+        console.log('failed');
         return { isValid };
       }
     } catch (error) {
