@@ -11,14 +11,11 @@ router.post('/', async (req, res) => {
 
   const loginResponse = await user.login(email);
 
-  console.log('router test');
-  console.log(loginResponse);
-
-  if (typeof loginResponse[0].id === 'number') {
-    console.log(loginResponse[0].user_name);
+  if (typeof loginResponse.id === 'number') {
+    console.log('Login route line 15: ' + loginResponse.username);
     res.json({
-      userId: loginResponse[0].user_id,
-      userName: loginResponse[0].user_name,
+      userId: loginResponse.id,
+      userName: loginResponse.username,
     }).status(200);
   } else {
     res.json({

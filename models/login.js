@@ -25,7 +25,7 @@ class loginUser {
         return response[0];
       } else {
         console.log('failed');
-        return { isValid };
+        return { id: null };
       }
     } catch (error) {
       console.error("LOGIN ERROR:", error);
