@@ -7,6 +7,7 @@ router.post('/', async (req, res) => {
 
   const {
     id,
+    process,
     brand,
     roast,
     grind,
@@ -22,6 +23,7 @@ router.post('/', async (req, res) => {
   try {
     const response = await Pull.addPull(
         id,
+        process,
         brand,
         roast,
         grind,

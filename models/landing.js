@@ -4,8 +4,9 @@ class landingModel {
   async showAll() {
     try {
         const response = await db.any(
-            `SELECT id, brand, roast, grind, weight_grind, weight_pull, pull_time, rating, notes FROM pulls WHERE show = 1;`,
+            `SELECT id, process, brand, roast, grind, weight_grind, weight_pull, pull_time, rating, notes FROM pulls WHERE show = 1;`,
         );
+        console.log('model line 9: ' + response)
         return response;
     } catch (error) {
         console.error('LOGIN ERROR:', error);

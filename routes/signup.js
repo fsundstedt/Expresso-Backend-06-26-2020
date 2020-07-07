@@ -25,8 +25,9 @@ router.post('/', async (req, res) => {
     );
 
     if (response[0].id >= 1) {
-      console.log('Route response: ' + response[0].id);
       res.json({ userId: response[0].id }).status(200);
+    } else if (response[0].id === 0) {
+      res.json({ userId: 0 }).status(200);
     } else {
       console.log('Route response failed: ' + response[0].id);
       res.send('Could not add new user').status(409);

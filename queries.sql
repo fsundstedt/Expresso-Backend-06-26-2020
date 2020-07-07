@@ -8,6 +8,7 @@ CREATE TABLE users (
 CREATE TABLE pulls (
     id serial primary key,
     user_id integer references users(id),
+    process varchar,
     brand varchar,
     roast varchar,
     grind varchar,

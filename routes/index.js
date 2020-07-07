@@ -9,6 +9,8 @@ router.get('/', async (req, res) => {
 
   const listResponse = await list.showAll();
 
+  console.log('Route line 12: ' + listResponse);
+
   if (typeof listResponse[0].id === 'number') {
     res.json( listResponse ).status(200);
   } else {
